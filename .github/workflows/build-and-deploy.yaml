@@ -26,8 +26,8 @@ jobs:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
         gcloud auth configure-docker $DOCKER_GCR_REPO_URL
-        docker build -t $DOCKER_GCR_REPO_URL/$GOOGLE_PROJECT/tapp-demo/node:$GITHUB_SHA . 
-        docker push $DOCKER_GCR_REPO_URL/$GOOGLE_PROJECT/tapp-demo/node:$GITHUB_SHA
+        docker build -t "$DOCKER_GCR_REPO_URL/$GOOGLE_PROJECT/tapp-demo/node:$GITHUB_SHA" . 
+        docker push "$DOCKER_GCR_REPO_URL/$GOOGLE_PROJECT/tapp-demo/node:$GITHUB_SHA"
 
     - name: deploy gkea
       env:
