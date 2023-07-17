@@ -10,11 +10,12 @@ COPY package*.json ./
 # Instalamos las dependencias del proyecto
 RUN npm install
 
-# Copiamos el resto de los archivos al directorio de trabajo
-COPY . .
+# Copiamos el resto de los archivos de la aplicación al directorio de trabajo
+COPY ./src ./src
+COPY ./public ./public
 
 # Exponemos el puerto en el que se ejecutará la aplicación
 EXPOSE 3000
 
 # Comando para ejecutar la aplicación
-CMD ["node", "app.js"]
+CMD ["node", "src/app.js"]
