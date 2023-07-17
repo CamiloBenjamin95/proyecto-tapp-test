@@ -29,7 +29,7 @@ jobs:
         docker build -t us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:16 .
         docker push us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:16
 
-    name: deploy gke
+    - name: deploy gke
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run:
