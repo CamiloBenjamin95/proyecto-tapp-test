@@ -33,7 +33,7 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run:
-        gcloud container cluter get-credentials cluster-tapp-1 --region us-south1
+        gcloud container cluster get-credentials cluster-tapp-1 --region us-south1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources.yaml
         kubectl apply -f resources.yaml
     
