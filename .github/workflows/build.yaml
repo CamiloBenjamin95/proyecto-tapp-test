@@ -1,4 +1,4 @@
-ame: Deploy Nginx
+name: Deploy Nginx
 
 on:
   push:
