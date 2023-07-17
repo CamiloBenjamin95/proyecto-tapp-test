@@ -25,15 +25,16 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
-        gcloud auth configure-docker us-east1-docker.pkg.dev
-        docker build -t us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:16 .
-        docker push us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:16
+        gcloud auth configure-docker $DOCKER_GCR_REPO_URL
+        docker build -t $DOCKER_GCR_REPO_URL/$GOOGLE_PROJECT/tapp-demo/node:$GITHUB_SHA . 
+        docker push $DOCKER_GCR_REPO_URL/$GOOGLE_PROJECT/tapp-demo/node:$GITHUB_SHA
 
     - name: deploy gke
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
         gcloud container clusters get-credentials cluster-tapp-1 --zone=us-south1 --project $GCLOUD_PROJECT   
-        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources.yaml
+      # sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources.yaml
         kubectl apply -f resources.yaml
+        kubectl set image deployment/$K8s_DEPLOYMENT_NAME $K8s_CONTAINER_NAME=$DOCKER_GCR_REPO_URL/$GCLOUD_PROJECT/node:$GITHUB_SHA
     

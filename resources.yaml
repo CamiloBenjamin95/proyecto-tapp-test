@@ -28,5 +28,5 @@ spec:
         app: node
     spec:
       containers:
-      - name: node
-        image: us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:16
+      - name: cont-node
+        image: us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:v1
