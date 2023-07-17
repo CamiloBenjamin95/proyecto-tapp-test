@@ -36,4 +36,4 @@ spec:
     spec:
       containers:
       - name: cont-node
-        image: us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:v1
+        image: us-east1-docker.pkg.dev/peinapp/tapp-demo/node:v1
