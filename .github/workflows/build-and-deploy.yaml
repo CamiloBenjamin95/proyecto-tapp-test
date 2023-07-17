@@ -35,4 +35,4 @@ jobs:
       run: |
         gcloud container clusters get-credentials cluster-tapp-1 --zone=us-south1 --project $GOOGLE_PROJECT   
         kubectl apply -f resources.yaml
-        kubectl set image deployment/node cont-node=us-east1-docker.pkg.dev/peinapp/tapp-demo/node:$GITHUB_SHA  
+        kubectl set image deployment/node cont-node=us-east1-docker.pkg.dev/peinapp/tapp-demo/node:$GITHUB_SHA -n tapp 
