@@ -11,8 +11,8 @@ COPY package*.json ./
 RUN npm install
 
 # Copiamos el resto de los archivos de la aplicación al directorio de trabajo
-COPY ./src ./src
-COPY ./public ./public
+COPY ./src ./
+COPY ./public ./
 
 # Exponemos el puerto en el que se ejecutará la aplicación
 EXPOSE 3000
