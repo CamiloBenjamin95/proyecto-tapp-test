@@ -24,6 +24,6 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
-        gcloud auth configure-docker us-central1-docker.pkg.dev
+        gcloud auth configure-docker us-east1-docker.pkg.dev
         docker build -t us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:16 .
         docker push us-east1-docker.pkg.dev/$GOOGLE_PROJECT/tapp-demo/node:16
