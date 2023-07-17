@@ -33,7 +33,7 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
-        gcloud container clusters get-credentials cluster-tapp-1 --zone=us-south1 --project $GCLOUD_PROJECT   
+        gcloud container clusters get-credentials cluster-tapp-1 --zone=us-south1 --project $GOOGLE_PROJECT   
         kubectl apply -f resources.yaml
-        kubectl set image deployment/$K8s_DEPLOYMENT_NAME $K8s_CONTAINER_NAME=$DOCKER_GCR_REPO_URL/$GCLOUD_PROJECT/node:$GITHUB_SHA
+        kubectl set image deployment/$K8s_DEPLOYMENT_NAME $K8s_CONTAINER_NAME=$DOCKER_GCR_REPO_URL/$GOOGLE_PROJECT/node:$GITHUB_SHA
     
